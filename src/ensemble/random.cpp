@@ -9,7 +9,12 @@
  * @authors Yvan Burrie, Marco Savelli
  */
 
+#if WIN32
 #include <afxres.h>
+#else
+#include <pthread_time.h>
+#include <pthread.h>
+#endif
 
 #include "../../inc/ensemble/random.hpp"
 
@@ -35,9 +40,19 @@ void Random::SetSeed(ulong newSeed)
 
 void Random::Randomize()
 {
+    long value;
+
+#if WIN32
     ::LARGE_INTEGER t3;
     ::QueryPerformanceCounter(&t3);
-    seed ^= t3.HighPart | (::GetTickCount() << 0x10u);
+    value = (t3.HighPart) | (::GetTickCount() << 0x10u);
+#else
+    ::timespec now {};
+    ::clock_gettime(CLOCK_MONOTONIC, &now);
+    value = (now.tv_sec) | (now.tv_nsec << 0x10u); // todo
+#endif
+
+    seed ^= value;
 }
 
 int Random::GetRand(int maxVal)
