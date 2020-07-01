@@ -1,17 +1,14 @@
-/* License: AGPL 3.0. See LICENSE in root directory. */
+/* License: MIT. See LICENSE in root directory. */
 
 /**
- * @date 2020/06/21
- * @author Yvan Burrie
+ * @date 2020/07/02
  */
 
 #pragma once
 
-namespace Ensemble {
+namespace Ensemble
+{
 
-/**
- *
- */
 class Random
 {
 protected:

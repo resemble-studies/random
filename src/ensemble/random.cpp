@@ -1,19 +1,20 @@
-/* License: AGPL 3.0. See LICENSE in root directory. */
+/* License: MIT. See LICENSE in root directory. */
 
 /**
  * The algorithm should be from "Efficient and portable combined random number generators" by Pierre L'Ecuyer
  * Pages: 742-751 of "Communications of the ACM", Volume 31 Issue 6, June 1988
  * DOI: 10.1145/62959.62969
  * URL: http://www.contrib.andrew.cmu.edu/~roehrig/CompFin/Week3/randclas.html
- * @date 2020/06/21
+ * @date 2020/07/02
  * @authors Yvan Burrie, Marco Savelli
  */
 
 #include <afxres.h>
 
-#include "../inc/random.hpp"
+#include "../../inc/ensemble/random.hpp"
 
-namespace Ensemble {
+namespace Ensemble
+{
 
 ulong Random::RandLocalSeed = 0;
 
