@@ -23,10 +23,8 @@ protected:
 
 public:
 
-    Random() = default;
-
     explicit
-    Random(ulong initialSeed);
+    Random(ulong initialSeed = 0);
 
 public:
 
