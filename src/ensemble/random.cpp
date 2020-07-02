@@ -28,7 +28,7 @@ Random::Random(ulong initialSeed)
     SetSeed(initialSeed);
 }
 
-ulong Random::GetSeed()
+ulong Random::GetSeed() const
 {
     return seed;
 }
@@ -62,18 +62,22 @@ int Random::GetRand(int maxVal)
 {
     ENSEMBLE_RANDOM_CHANGE_SEED(seed, RandMaximum)
     RandLocalSeed = seed;
-    auto uniform = double(RandLocalSeed) * RandMultiplier;
 
-    return (ulong)uniform % (ulong)(maxVal != 0 ? maxVal : RAND_MAX);
+    auto uniform = (double)RandLocalSeed * RandMultiplier;
+    auto result = (*((ulong*)&uniform)) % (ulong)(maxVal != 0 ? maxVal : RAND_MAX);
+
+    return result;
 }
 
 float Random::GetRandF(float maxVal)
 {
     ENSEMBLE_RANDOM_CHANGE_SEED(seed, RandMaximum)
     RandLocalSeed = seed;
-    auto uniform = double(RandLocalSeed) * RandMultiplier;
 
-    return (ulong)uniform % (ulong)(maxVal != 0 ? maxVal : RAND_MAX);
+    auto uniform = (double)RandLocalSeed * RandMultiplier;
+    auto result = (*((ulong*)&uniform)) % (ulong)(maxVal != 0 ? maxVal : RAND_MAX);
+
+    return result;
 }
 
 } // namespace Ensemble

@@ -20,7 +20,7 @@ protected:
 
     static ulong RandLocalSeed;
 
-    static constexpr float RandMultiplier = 4.656612e-10;
+    static constexpr float RandMultiplier = 4.656612E-10;
 
     ulong seed = 0;
 
@@ -31,7 +31,7 @@ public:
 
 public:
 
-    ulong GetSeed();
+    ulong GetSeed() const;
 
     void SetSeed(ulong newSeed);
 
