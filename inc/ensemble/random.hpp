@@ -6,6 +6,10 @@
 
 #pragma once
 
+#ifndef ulong
+#define ulong unsigned long
+#endif
+
 namespace Ensemble
 {
 

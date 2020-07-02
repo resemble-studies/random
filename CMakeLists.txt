@@ -8,8 +8,6 @@ project("ensemble-random" LANGUAGES CXX C)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-add_compile_definitions("ulong=unsigned long")
-
 include_directories("${CMAKE_CURRENT_LIST_DIR}/inc")
 
 set(ENSEMBLE_RANDOM_LIB "ensemble-random-lib")
