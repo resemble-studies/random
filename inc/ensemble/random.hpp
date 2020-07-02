@@ -13,7 +13,10 @@ class Random
 {
 protected:
 
-    static constexpr ulong M = 0x7FFFFFFF;
+    /**
+     * Mersenne prime number for the maximum random value.
+     */
+    static constexpr ulong RandMaximum = (2u << 30u) - 1;
 
     static ulong RandLocalSeed;
 

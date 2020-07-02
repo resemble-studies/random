@@ -55,15 +55,12 @@ void Random::Randomize()
     seed ^= value;
 }
 
+#define ENSEMBLE_RANDOM_CHANGE_SEED(s, m) \
+    if ((s) = 39373 * (s) - 2147089917 * (s) / 54532, (s) < 0) (s) += (m);
+
 int Random::GetRand(int maxVal)
 {
-    seed = (39373 * seed) - 0x7FF9FDFD * (seed / 54532);
-
-    if (seed < 0)
-    {
-        seed += 0x7FF9FDFD;
-    }
-
+    ENSEMBLE_RANDOM_CHANGE_SEED(seed, RandMaximum)
     RandLocalSeed = seed;
     auto uniform = double(RandLocalSeed) * RandMultiplier;
 
@@ -72,13 +69,7 @@ int Random::GetRand(int maxVal)
 
 float Random::GetRandF(float maxVal)
 {
-    seed = (0x99CD * seed) - 0x7FF9FDFD * (seed / 0xD504);
-
-    if (seed < 0)
-    {
-        seed += 0x7FF9FDFD;
-    }
-
+    ENSEMBLE_RANDOM_CHANGE_SEED(seed, RandMaximum)
     RandLocalSeed = seed;
     auto uniform = double(RandLocalSeed) * RandMultiplier;
 
