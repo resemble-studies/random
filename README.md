@@ -2,8 +2,8 @@
 
 A uniform distributed random number generator.
 
- - Supports assigning seeds.
- - Range of random values.
+ - Supports seeds.
+ - Supports range.
  - Simple to use.
 
 ## Usage
@@ -21,7 +21,7 @@ We create an instance of `Random`.
 auto random = Random();
 ```
 
-We initialise our `Random` instance by calling the `Randomize` which fills the seed with values based on the system clock.
+We initialise by calling the `Randomize` which fills the seed with values based on the system clock.
 
 ```c++
 random.Randomize();
@@ -41,7 +41,9 @@ for (int i = 0; i < 10; ++i)
     printf("%d\n", random.GetRand(1000));
 }
 ```
-... output:
+
+...
+
 ```
 760
 435
@@ -63,7 +65,9 @@ for (int i = 0; i < 10; ++i)
     printf("%f\n", random.GetRandF(1000));
 }
 ```
-... output:
+
+...
+
 ```
 41.0
 518.0
@@ -77,7 +81,7 @@ for (int i = 0; i < 10; ++i)
 695.0
 ```
 
-We could also initialise the `Random` class with our initial seed.
+We could also instantiate a new `Random` class with our initial seed.
 
 ```c++
 random = Random(initialSeed);
