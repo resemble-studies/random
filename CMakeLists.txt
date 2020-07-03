@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 include_directories("${CMAKE_CURRENT_LIST_DIR}/inc")
 
-set(ENSEMBLE_RANDOM_LIB "ensemble-random-lib")
+set(ENSEMBLE_RANDOM_LIB "ensemble-random")
 add_library(${ENSEMBLE_RANDOM_LIB} STATIC "")
 target_sources(
     ${ENSEMBLE_RANDOM_LIB}
@@ -20,13 +20,13 @@ target_sources(
 )
 
 if (CMAKE_BUILD_TYPE MATCHES "^[Dd]ebug")
-    set(ENSEMBLE_RANDOM_EXE "ensemble-random-exe")
+    set(ENSEMBLE_RANDOM_TEST "ensemble-random-test")
     add_executable(
-        ${ENSEMBLE_RANDOM_EXE}
+        ${ENSEMBLE_RANDOM_TEST}
         "${CMAKE_CURRENT_LIST_DIR}/test/main.cpp"
     )
     target_link_libraries(
-        ${ENSEMBLE_RANDOM_EXE}
+        ${ENSEMBLE_RANDOM_TEST}
         ${ENSEMBLE_RANDOM_LIB}
     )
 endif ()
