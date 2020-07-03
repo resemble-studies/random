@@ -5,14 +5,14 @@
  * Pages: 742-751 of "Communications of the ACM", Volume 31 Issue 6, June 1988
  * DOI: 10.1145/62959.62969
  * URL: http://www.contrib.andrew.cmu.edu/~roehrig/CompFin/Week3/randclas.html
- * @date 2020/07/02
+ * @date 2020/07/03
  * @authors Yvan Burrie, Marco Savelli
  */
 
 #if WIN32
 #include <afxres.h>
 #else
-#include <pthread_time.h>
+#include <cstdlib>
 #include <pthread.h>
 #endif
 
@@ -49,7 +49,7 @@ void Random::Randomize()
 #else
     ::timespec now {};
     ::clock_gettime(CLOCK_MONOTONIC, &now);
-    value = (now.tv_sec) | (now.tv_nsec << 0x10u); // todo
+    value = (now.tv_sec) | (now.tv_nsec << 0x10u);
 #endif
 
     seed ^= value;
