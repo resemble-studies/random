@@ -2,7 +2,7 @@
 
 /**
  * @author Yvan Burrie
- * @date 2020/07/02
+ * @date 2020/07/03
  */
 
 #include <cstdio>
@@ -21,8 +21,8 @@ int main()
     auto initialSeed = random.GetSeed();
     printf("Initial seed: %lu\n", initialSeed);
 
-    const int count = 10;
-    const int range = 1000;
+    const int count = 100;
+    const int range = 10000;
 
     printf("Test random integers:\n");
     auto ar1 = new ulong[count];
@@ -49,14 +49,14 @@ int main()
     for (int i = 0; i < count; ++i)
     {
         auto value = random.GetRand(range);
-        printf("%d\n", value);
+        printf("%d == %lu\n", value, ar1[i]);
         assert(value == ar1[i]);
     }
     printf("Verify seeded floats:\n");
     for (int i = 0; i < count; ++i)
     {
         auto value = random.GetRandF(range);
-        printf("%f\n", value);
+        printf("%f == %f\n", value, ar2[i]);
         assert(value == ar2[i]);
     }
 }
